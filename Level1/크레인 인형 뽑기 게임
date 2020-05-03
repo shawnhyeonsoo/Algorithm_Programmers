@@ -34,7 +34,8 @@ board	moves	result
 crane_game_104.jpg
 
 
-In [ ]: def solution(dartResult):
+In [ ]:
+def solution(dartResult):
     dart_result = dartResult.replace('10', 'a')
     num = list(map(str, range(0, 10))) + ['a']
     bonus = {'S':1, 'D':2, 'T':3}
