@@ -68,7 +68,29 @@ def solution(bridge_length, weight, truck_weights):
 
 > 스택과 큐에 관한 문제로 스택에서 pop 해주며 문제 그대로 구현을 해보았다. 수학적 방법을 통해 보다 더 최적화시킬 수 없을까 생각을 해봤는데, 아직 성공적으로
   구현하진 못했다. 위의 코드는 주어진 테스트 케이스에 대해서 6691ms까지 나와서 이보다 더 효율적인 방법을 찾아봐야 할 것 같다.
-  
+
+
+```python
+def solution(bridge_length,weight,truck_weights):
+    from collections import deque
+    test = deque(truck_weights)
+    time = 0
+    bridge = [0] * bridge_length
+    while bridge:
+        time += 1
+        bridge.pop(0)
+        if test:
+            if sum(bridge) + test[0] <= weight:
+                bridge.append(test.popleft())
+            else:
+                bridge.append(0)
+    return time
+
+```
+
+> deque를 사용하여 시간을 줄여봤는데, 코드는 우선 더 간결해짐을 볼 수 있었다. 우선 길이 만큼 0을 가진 bridge라는 다리의 상황을 배열로 구현하여 시간이 지날때마다   제일 앞의 0 혹은 트럭을 pop 시키면서 while문을 돌리는것인데, 전 코드보다 대부분의 상황에서 효율적임을 볼 수 있었다. 
+
+
 </br>
 정확성: 100.0</br>
 합계: 100.0/100.0
